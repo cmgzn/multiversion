@@ -265,15 +265,15 @@ def main(argv=None):
 
             # Find config
             confpath = os.path.join(repopath, confdir)
-            try:
-                current_config = load_sphinx_config(confpath, confoverrides)
-            except (OSError, sphinx_config.ConfigError):
-                logger.error(
-                    "Failed load config for %s from %s",
-                    gitref.refname,
-                    confpath,
-                )
-                continue
+            # try:
+            current_config = load_sphinx_config(confpath, confoverrides, add_defaults=True)
+            # except (OSError, sphinx_config.ConfigError):
+            #     logger.error(
+            #         "Failed load config for %s from %s",
+            #         gitref.refname,
+            #         confpath,
+            #     )
+            #     continue
 
             # Ensure that there are not duplicate output dirs
             outputdir = config.smv_outputdir_format.format(
